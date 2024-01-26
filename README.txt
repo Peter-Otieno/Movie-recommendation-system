@@ -1,30 +1,43 @@
 # Movie-Recommendation-System
 
 
-This repository contains the code and resources used to build a recommendation system model. This model will be used to predict which genre and movies and likely to recieve high number of viewers based on the data provided which consists of different users and movies of various genres. The model will also be trained using the ratings data of different movies and genres.
+This repository contains the code and resources used to build a recommendation system model. This model will be 
+used to predict which genre and movies and likely to recieve high number of viewers based on the data provided which 
+consists of different users and movies of various genres. The model will also be trained using the ratings data of different movies and genres.
 
 
 # Problem Statement
 
-Filamu Streaming Services is a streaming platform that has had recent complaints from their users over the lack of movie recommendation they like. The absense of a recommendation system on their platform is costing them business.  in order for them to solve this they have to come up with recommendation system  that will improve their user satisfaction.
+Filamu Streaming Services is a streaming platform that has had recent complaints from their users over the lack of
+movie recommendation they like. The absense of a recommendation system on their platform is costing them business. 
+in order for them to solve this they have to come up with recommendation system  that will improve their user satisfaction.
 
 
 # OVERVIEW
 ## Movie Industry Overview
 
-The film industry, a global juggernaut, annually amasses billions in revenue. As per Statista, in 2019 alone, the global box office accumulated a staggering $42.5 billion.
-Film production is the creative hub where movies, TV shows, and other visual content come to life, involving stakeholders such as studios, independent producers, and streaming platforms. 
-The distribution segment markets and transports these creations to theaters, streaming services, and other outlets. Exhibition refers to the screening of movies and TV shows in cinemas
-Movies possess a universal charm, forging connections among individuals from diverse backgrounds. Despite this collective appeal, our personal cinematic tastes exhibit.
+The film industry, a global juggernaut, annually amasses billions in revenue. As per Statista, in 2019 alone, the 
+global box office accumulated a staggering $42.5 billion.
+Film production is the creative hub where movies, TV shows, and other visual content come to life, involving stakeholders 
+such as studios, independent producers, and streaming platforms. 
+The distribution segment markets and transports these creations to theaters, streaming services, and other outlets. Exhibition 
+refers to the screening of movies and TV shows in cinemas
+Movies possess a universal charm, forging connections among individuals from diverse backgrounds. Despite this collective appeal,
+our personal cinematic tastes exhibit.
 uniqueness, spanning various genres such as thrillers, romance, or sci-fi, and often centering around preferred actors and directors.
 
 # BUSINESS PROBLEM
 
-In the world of streaming services, with the rise in users, competition among streaming services is at an all time high. With a high demand in content, the streaming services need to keep up with growing tastes in the consumer base and they need to push content that is relevant and up to their consumers standards.
+In the world of streaming services, with the rise in users, competition among streaming services is at an all time high. With
+a high demand in content, the streaming services need to keep up with growing tastes in the consumer base and they need to push
+content that is relevant and up to their consumers standards.
 
-Filamu Streaming Services aims to stay competitive in this industry by utilizing the data gotten from GroupLens research lab at the University of Minnesota to build a better and more advanced recommendation system.
+Filamu Streaming Services aims to stay competitive in this industry by utilizing the data gotten from GroupLens research 
+lab at the University of Minnesota to build a better and more advanced recommendation system.
 
-Crafting a universal formula for movies that would captivate every individual proves challenging; however, through meticulous analysis of user data and movie-related data,valuable insights are extracted so as to provide users with movie recommendations that would best suit their preferences.
+Crafting a universal formula for movies that would captivate every individual proves challenging; however, through meticulous
+analysis of user data and movie-related data,valuable insights are extracted so as to provide users with movie recommendations 
+that would best suit their preferences.
 
 # COMPONENTS
 Data from-https://grouplens.org/datasets/movielens/latest/
@@ -37,7 +50,8 @@ Github - Jupyter Notebook
 
 MovieId - represents a unique identifier of the movie
 Title -  name of the film containing the coinciding movieId
-Genres - a stylistic or thematic category for motion pictures based on similarities either in the narrative elements, aesthetic approach, or the emotional response to the film
+Genres - a stylistic or thematic category for motion pictures based on similarities either in the narrative elements, aesthetic
+approach, or the emotional response to the film
 UserId -  a unique customer identifier by which an advertiser chooses to identify a user visiting their website.
 Rating - a measurement of the quality or success of something
 Timestamp - a digital record of the time of occurrence of a particular event.
@@ -45,25 +59,36 @@ Timestamp - a digital record of the time of occurrence of a particular event.
 ## Data Sourcing and Preparation
 Multiple datasets that had a common column, movieId, were merged into a pandas dataframe so as to make the data more comprehensible. 
 
-The values in the “genre” column were a list which would pose a problem in correctly analyzing each different genre. A function to split the list into individual genres was created.
+The values in the “genre” column were a list which would pose a problem in correctly analyzing each different genre. A function to 
+split the list into individual genres was created.
 
 There were 0 null values and 0 duplicate entries  in the now almost complete dataset.
 
 
 ## Exploratory Data Analysis
-Here we will explore the different features of the dataset to gain a better understanding of the data through univariate and bivariate analysis.
+Here we will explore the different features of the dataset to gain a better understanding of the data through univariate and 
+bivariate analysis.
 We will use data vizualization to uncover trends and patterns. 
 
 ## MODELLING.
 
 ### Types of Recommendation Systems
 ## Content Based Filtering
-Content-based filtering is a recommendation strategy that suggests items similar to those a user has previously liked. It calculates similarity (often using cosine similarity) between the user’s preferences and item attributes, such as lead actors, directors, and genres. For example, if a user enjoys ‘The Prestige’, the system recommends movies with ‘Christian Bale’, ‘Thriller’ genre, or films by ‘Christopher Nolan’.
-However, content-based filtering has drawbacks. It limits exposure to different products, preventing users from exploring a variety of items. This can hinder business expansion as users might not try out new types of products
+Content-based filtering is a recommendation strategy that suggests items similar to those a user has previously liked. It
+calculates similarity (often using cosine similarity) between the user’s preferences and item attributes, such as lead actors,
+directors, and genres. For example, if a user enjoys ‘The Prestige’, the system recommends movies with ‘Christian Bale’, ‘Thriller’ 
+genre, or films by ‘Christopher Nolan’.
+However, content-based filtering has drawbacks. It limits exposure to different products, preventing users from exploring a variety of items.
+This can hinder business expansion as users might not try out new types of products
 
 ## Collaborative Filtering
-Collaborative filtering is a recommendation strategy that considers the user’s behavior and compares it with other users in the database. It uses the history of all users to influence the recommendation algorithm. Unlike content-based filtering, collaborative filtering relies on the interactions of multiple users with items to generate suggestions. It doesn’t solely depend on one user’s data for modeling. There are various approaches to implement collaborative filtering, but the key concept is the collective influence of multiple users on the recommendation outcome.
-Functions were created to  automate the process of creating a model and hyperparameter tuning for collaborative models, providing an efficient way to experiment with different algorithms and settings.
+Collaborative filtering is a recommendation strategy that considers the user’s behavior and compares it with other users in the database. 
+It uses the history of all users to influence the recommendation algorithm. Unlike content-based filtering, collaborative filtering relies
+on the interactions of multiple users with items to generate suggestions. It doesn’t solely depend on one user’s data for modeling. There 
+are various approaches to implement collaborative filtering, but the key concept is the collective influence of multiple users on the recommendation
+outcome.
+Functions were created to  automate the process of creating a model and hyperparameter tuning for collaborative models, providing an efficient 
+way to experiment with different algorithms and settings.
 
 ## Building and Tuning
 Here different models are constructed using surprise library’s algorithms, then evaluated and tuned according to collaborative filtering model methods.
@@ -79,8 +104,6 @@ Evaluation Metric: Root Mean Squared Error (RMSE)
 The SVD model consistently outperforms the other models, justifying its selection as the final model.
 Hyperparameter tuning improves model performance.
 User ratings influence the movie recommendations, making the system personalized.
-
-<img width="514" alt="Screenshot 2024-01-18 at 15 14 26" src="https://github.com/MwangiWambugu/Movie-Recommendation-Systems/assets/111336076/79120062-896c-4bad-a3f8-4bc24fb7c3ec">
 
 ## Conclusion
 - The top 3 movies are:
