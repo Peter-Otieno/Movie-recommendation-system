@@ -1,153 +1,109 @@
-Summary
-=======
+# Movie-Recommendation-System
+![movie-recommendation](https://github.com/MwangiWambugu/Movie-Recommendation-Systems/assets/111336076/296a1b82-07cf-4862-940b-38486eb32d52)
 
-This dataset (ml-latest-small) describes 5-star rating and free-text tagging activity from [MovieLens](http://movielens.org), a movie recommendation service. It contains 100836 ratings and 3683 tag applications across 9742 movies. These data were created by 610 users between March 29, 1996 and September 24, 2018. This dataset was generated on September 26, 2018.
-
-Users were selected at random for inclusion. All selected users had rated at least 20 movies. No demographic information is included. Each user is represented by an id, and no other information is provided.
-
-The data are contained in the files `links.csv`, `movies.csv`, `ratings.csv` and `tags.csv`. More details about the contents and use of all these files follows.
-
-This is a *development* dataset. As such, it may change over time and is not an appropriate dataset for shared research results. See available *benchmark* datasets if that is your intent.
-
-This and other GroupLens data sets are publicly available for download at <http://grouplens.org/datasets/>.
+This repository contains the code and resources used to build a recommendation system model. This model will be used to predict which genre and movies and likely to recieve high number of viewers based on the data provided which consists of different users and movies of various genres. The model will also be trained using the ratings data of different movies and genres.
 
 
-Usage License
-=============
+# Problem Statement
 
-Neither the University of Minnesota nor any of the researchers involved can guarantee the correctness of the data, its suitability for any particular purpose, or the validity of results based on the use of the data set. The data set may be used for any research purposes under the following conditions:
-
-* The user may not state or imply any endorsement from the University of Minnesota or the GroupLens Research Group.
-* The user must acknowledge the use of the data set in publications resulting from the use of the data set (see below for citation information).
-* The user may redistribute the data set, including transformations, so long as it is distributed under these same license conditions.
-* The user may not use this information for any commercial or revenue-bearing purposes without first obtaining permission from a faculty member of the GroupLens Research Project at the University of Minnesota.
-* The executable software scripts are provided "as is" without warranty of any kind, either expressed or implied, including, but not limited to, the implied warranties of merchantability and fitness for a particular purpose. The entire risk as to the quality and performance of them is with you. Should the program prove defective, you assume the cost of all necessary servicing, repair or correction.
-
-In no event shall the University of Minnesota, its affiliates or employees be liable to you for any damages arising out of the use or inability to use these programs (including but not limited to loss of data or data being rendered inaccurate).
-
-If you have any further questions or comments, please email <grouplens-info@umn.edu>
+Filamu Streaming Services is a streaming platform that has had recent complaints from their users over the lack of movie recommendation they like. The absense of a recommendation system on their platform is costing them business.  in order for them to solve this they have to come up with recommendation system  that will improve their user satisfaction.
 
 
-Citation
-========
+# OVERVIEW
+## Movie Industry Overview
 
-To acknowledge use of the dataset in publications, please cite the following paper:
+The film industry, a global juggernaut, annually amasses billions in revenue. As per Statista, in 2019 alone, the global box office accumulated a staggering $42.5 billion.
+Film production is the creative hub where movies, TV shows, and other visual content come to life, involving stakeholders such as studios, independent producers, and streaming platforms. 
+The distribution segment markets and transports these creations to theaters, streaming services, and other outlets. Exhibition refers to the screening of movies and TV shows in cinemas
+Movies possess a universal charm, forging connections among individuals from diverse backgrounds. Despite this collective appeal, our personal cinematic tastes exhibit.
+uniqueness, spanning various genres such as thrillers, romance, or sci-fi, and often centering around preferred actors and directors.
 
-> F. Maxwell Harper and Joseph A. Konstan. 2015. The MovieLens Datasets: History and Context. ACM Transactions on Interactive Intelligent Systems (TiiS) 5, 4: 19:1–19:19. <https://doi.org/10.1145/2827872>
+# BUSINESS PROBLEM
 
+In the world of streaming services, with the rise in users, competition among streaming services is at an all time high. With a high demand in content, the streaming services need to keep up with growing tastes in the consumer base and they need to push content that is relevant and up to their consumers standards.
 
-Further Information About GroupLens
-===================================
+Filamu Streaming Services aims to stay competitive in this industry by utilizing the data gotten from GroupLens research lab at the University of Minnesota to build a better and more advanced recommendation system.
 
-GroupLens is a research group in the Department of Computer Science and Engineering at the University of Minnesota. Since its inception in 1992, GroupLens's research projects have explored a variety of fields including:
+Crafting a universal formula for movies that would captivate every individual proves challenging; however, through meticulous analysis of user data and movie-related data,valuable insights are extracted so as to provide users with movie recommendations that would best suit their preferences.
 
-* recommender systems
-* online communities
-* mobile and ubiquitious technologies
-* digital libraries
-* local geographic information systems
+# COMPONENTS
+Data from-https://grouplens.org/datasets/movielens/latest/
 
-GroupLens Research operates a movie recommender based on collaborative filtering, MovieLens, which is the source of these data. We encourage you to visit <http://movielens.org> to try it out! If you have exciting ideas for experimental work to conduct on MovieLens, send us an email at <grouplens-info@cs.umn.edu> - we are always interested in working with external collaborators.
+Presentation-https://docs.google.com/presentation/d/1PzVxNz-HxQ0NSYiMNIvJtx7LaBwRL3xakdopD9pmxHw/edit#slide=id.g2b11bf16861_1_274
 
+Github - Jupyter Notebook
 
-Content and Use of Files
-========================
+## Data Understanding the Features 
 
-Formatting and Encoding
------------------------
+MovieId - represents a unique identifier of the movie
+Title -  name of the film containing the coinciding movieId
+Genres - a stylistic or thematic category for motion pictures based on similarities either in the narrative elements, aesthetic approach, or the emotional response to the film
+UserId -  a unique customer identifier by which an advertiser chooses to identify a user visiting their website.
+Rating - a measurement of the quality or success of something
+Timestamp - a digital record of the time of occurrence of a particular event.
 
-The dataset files are written as [comma-separated values](http://en.wikipedia.org/wiki/Comma-separated_values) files with a single header row. Columns that contain commas (`,`) are escaped using double-quotes (`"`). These files are encoded as UTF-8. If accented characters in movie titles or tag values (e.g. Misérables, Les (1995)) display incorrectly, make sure that any program reading the data, such as a text editor, terminal, or script, is configured for UTF-8.
+## Data Sourcing and Preparation
+Multiple datasets that had a common column, movieId, were merged into a pandas dataframe so as to make the data more comprehensible. 
 
+The values in the “genre” column were a list which would pose a problem in correctly analyzing each different genre. A function to split the list into individual genres was created.
 
-User Ids
---------
-
-MovieLens users were selected at random for inclusion. Their ids have been anonymized. User ids are consistent between `ratings.csv` and `tags.csv` (i.e., the same id refers to the same user across the two files).
-
-
-Movie Ids
----------
-
-Only movies with at least one rating or tag are included in the dataset. These movie ids are consistent with those used on the MovieLens web site (e.g., id `1` corresponds to the URL <https://movielens.org/movies/1>). Movie ids are consistent between `ratings.csv`, `tags.csv`, `movies.csv`, and `links.csv` (i.e., the same id refers to the same movie across these four data files).
+There were 0 null values and 0 duplicate entries  in the now almost complete dataset.
 
 
-Ratings Data File Structure (ratings.csv)
------------------------------------------
+## Exploratory Data Analysis
+Here we will explore the different features of the dataset to gain a better understanding of the data through univariate and bivariate analysis.
+We will use data vizualization to uncover trends and patterns. 
 
-All ratings are contained in the file `ratings.csv`. Each line of this file after the header row represents one rating of one movie by one user, and has the following format:
+## MODELLING.
 
-    userId,movieId,rating,timestamp
+### Types of Recommendation Systems
+## Content Based Filtering
+Content-based filtering is a recommendation strategy that suggests items similar to those a user has previously liked. It calculates similarity (often using cosine similarity) between the user’s preferences and item attributes, such as lead actors, directors, and genres. For example, if a user enjoys ‘The Prestige’, the system recommends movies with ‘Christian Bale’, ‘Thriller’ genre, or films by ‘Christopher Nolan’.
+However, content-based filtering has drawbacks. It limits exposure to different products, preventing users from exploring a variety of items. This can hinder business expansion as users might not try out new types of products
 
-The lines within this file are ordered first by userId, then, within user, by movieId.
+## Collaborative Filtering
+Collaborative filtering is a recommendation strategy that considers the user’s behavior and compares it with other users in the database. It uses the history of all users to influence the recommendation algorithm. Unlike content-based filtering, collaborative filtering relies on the interactions of multiple users with items to generate suggestions. It doesn’t solely depend on one user’s data for modeling. There are various approaches to implement collaborative filtering, but the key concept is the collective influence of multiple users on the recommendation outcome.
+Functions were created to  automate the process of creating a model and hyperparameter tuning for collaborative models, providing an efficient way to experiment with different algorithms and settings.
 
-Ratings are made on a 5-star scale, with half-star increments (0.5 stars - 5.0 stars).
+## Building and Tuning
+Here different models are constructed using surprise library’s algorithms, then evaluated and tuned according to collaborative filtering model methods.
+Models : The models include 
+- KNNBasic
+- KNNBaseline
+- KNNWithMeans
+- SVD
 
-Timestamps represent seconds since midnight Coordinated Universal Time (UTC) of January 1, 1970.
+Evaluation Metric: Root Mean Squared Error (RMSE)
 
+## Evaluation
+The SVD model consistently outperforms the other models, justifying its selection as the final model.
+Hyperparameter tuning improves model performance.
+User ratings influence the movie recommendations, making the system personalized.
 
-Tags Data File Structure (tags.csv)
------------------------------------
+<img width="514" alt="Screenshot 2024-01-18 at 15 14 26" src="https://github.com/MwangiWambugu/Movie-Recommendation-Systems/assets/111336076/79120062-896c-4bad-a3f8-4bc24fb7c3ec">
 
-All tags are contained in the file `tags.csv`. Each line of this file after the header row represents one tag applied to one movie by one user, and has the following format:
-
-    userId,movieId,tag,timestamp
-
-The lines within this file are ordered first by userId, then, within user, by movieId.
-
-Tags are user-generated metadata about movies. Each tag is typically a single word or short phrase. The meaning, value, and purpose of a particular tag is determined by each user.
-
-Timestamps represent seconds since midnight Coordinated Universal Time (UTC) of January 1, 1970.
-
-
-Movies Data File Structure (movies.csv)
----------------------------------------
-
-Movie information is contained in the file `movies.csv`. Each line of this file after the header row represents one movie, and has the following format:
-
-    movieId,title,genres
-
-Movie titles are entered manually or imported from <https://www.themoviedb.org/>, and include the year of release in parentheses. Errors and inconsistencies may exist in these titles.
-
-Genres are a pipe-separated list, and are selected from the following:
-
-* Action
-* Adventure
-* Animation
-* Children's
-* Comedy
-* Crime
-* Documentary
-* Drama
-* Fantasy
-* Film-Noir
-* Horror
-* Musical
-* Mystery
-* Romance
-* Sci-Fi
-* Thriller
-* War
-* Western
-* (no genres listed)
+## Conclusion
+- The top 3 movies are:
+Forrest Gump(1994),The Shawshank Redemption(1994) and Pulp Fiction(1994)
+- The bar plot shows the distribution of all the movie genres in the dataset.
+- The 3 top genres are listed below starting from the most common one:Drama,Comedy and Action
 
 
-Links Data File Structure (links.csv)
----------------------------------------
+## Recommendation
+- Filamu should consider displaying the following movies as the most popular films in the their database: Forrest Gump(1994), Hoop Dreams(1994), Pulp Fiction(1994)
+- Filamu should consider having more movies in the following four genres: Drama, Comedy, Action and Thriller, since they are the most popular.
+- When deployed, the developed recommendation system will assist Filamu in suggesting films that users might like. This is due to the fact that the system will display to the users films similar to those they have already watched and enjoyed, as well as films that like users have enjoyed.
 
-Identifiers that can be used to link to other sources of movie data are contained in the file `links.csv`. Each line of this file after the header row represents one movie, and has the following format:
+## Next steps
+- Continuously monitor and retrain the deployed model with new data to ensure consistent predictive quality in real-world scenarios.
+- Enhance scalability by implementing distributed computing frameworks like Spark to handle large datasets more efficiently.
+- Create more comprehensive user and item profiles by incorporating features such as descriptions, demographics, and historical behavior.
 
-    movieId,imdbId,tmdbId
-
-movieId is an identifier for movies used by <https://movielens.org>. E.g., the movie Toy Story has the link <https://movielens.org/movies/1>.
-
-imdbId is an identifier for movies used by <http://www.imdb.com>. E.g., the movie Toy Story has the link <http://www.imdb.com/title/tt0114709/>.
-
-tmdbId is an identifier for movies used by <https://www.themoviedb.org>. E.g., the movie Toy Story has the link <https://www.themoviedb.org/movie/862>.
-
-Use of the resources listed above is subject to the terms of each provider.
+## Deployment
+Here we will make sure our model can predict.
+The content based system was deployed to Streamlit.
 
 
-Cross-Validation
-----------------
 
-Prior versions of the MovieLens dataset included either pre-computed cross-folds or scripts to perform this computation. We no longer bundle either of these features with the dataset, since most modern toolkits provide this as a built-in feature. If you wish to learn about standard approaches to cross-fold computation in the context of recommender systems evaluation, see [LensKit](http://lenskit.org) for tools, documentation, and open-source code examples.
+
+ 
